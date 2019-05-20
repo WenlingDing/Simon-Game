@@ -1,0 +1,51 @@
+#green{
+    background-color: green;
+    width: 200px;
+    height: 200px;
+}
+
+#red {
+   background-color: red;
+}
+
+#orange {
+    background-color:orange;
+}
+
+#yellow {
+    background-color:yellow;
+}
+
+body{
+    background-color: #EDE1DF;
+}
+
+
+header {
+    color: #EF5837;
+    text-align: center;
+    width: 100%;
+}
+
+.text-center{
+    margin:10px;
+}
+
+.btn {
+    background-color: #7E3932;
+    border-color: white;
+}
+
+.count {
+    background-color: #7E3932;
+    color: white;
+    padding: 0.55rem 1rem;
+    font-size: 1.25rem;
+    border-radius: .3rem;
+    border-color: white;
+}
+
+.gameTable{
+    text-align: center;
+}
+

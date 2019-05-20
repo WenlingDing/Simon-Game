@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="style.css" rel="stylesheet">
+<title>Simon-Game</title>
+</head>
+<body>
+   <div class="container">
+     <div class="row">
+      <header >Let's Start Simon Game!</header>
+     <div class='text-center col-xs-12 col-sm-12 col-lg-12'>
+         <button type="button" class="btn btn-primary btn-lg">start</button>
+        <label class="count">Count：</label><span class="show"></span>
+     </div>
+             <table class="gameTable text-center col-xs-8 col-sm-8 col-lg-8" >
+           <tr>
+               <td id="green" class="block" width= "200" height="200" onClick="addToPlayer(this.id)" ></td>
+               <td id="red" class="block" width= "200" height="200"  onClick="addToPlayer(this.id)" ></td>
+           </tr>
+           <tr>
+               <td id="yellow" class="block" width= "200" height="200"  onClick="addToPlayer(this.id)"></td>
+               <td  id="orange" class="block" width= "200" height="200"  onClick="addToPlayer(this.id)"></td>
+           </tr>
+       </table>
+</div>
+</div>
+  
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+ <script src="simon.js"></script>       
+</body>
+</html>
+
+
+
+
+
+
+
