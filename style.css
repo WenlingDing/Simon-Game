@@ -2,12 +2,23 @@ body {
 background-color: #F0C3C3;
 }
 
+table {
+  text-align: center;
+}
+
+.intro {
+   color:	#8B008B;
+   text-align:center;
+   font-size: medium;
+   margin: 15px 10px;
+   padding: 20px;
+   font-family:Verdana,Arial,Sans-serif;
+}
 
 .colorblock {
-  width: 300px;
-  height: 300px;
+  width: 35vw;
+  height: 35vw;
   display: inline-block;
-  text-align: center;
 }
 
 .red {
@@ -32,42 +43,55 @@ background-color: #F0C3C3;
 
 
 #round {
-  height: 300px;
-  width: 300px;
+  height: 35vw;
+  width: 35vw;
   background-color:	white;
   position:absolute;
-  left:150px;
+  left:32vw;
   border-radius: 50%;
-  top:150px;
+  top:15vw;
   z-index: 100;
-  box-shadow: 0px 0px 55px #000;
+  box-shadow: 0px 0px 2vw;
   cursor: pointer;
 }
 
 h1 {
   color:orange;
-  font-size: 6vw;
+  font-size:xx-large;
   font-weight: bold;
-  margin-top: 0.8em;
+  margin: 0vw;
   text-align: center;
   font-family:Arial,Verdana,Sans-serif;
 }
 
-p {
+#simon {
   color:orange;
-  font-size: 1.5em;
+  font-size: xx-large;
+  font-weight: bold;
+  margin-top: 1vw;
+  text-align: center;
+  font-family:Arial,Verdana,Sans-serif;
+  position: relative;
+  top: 4vw;
+}
+
+#start {
+  color:orange;
+  font-size:small;
   font-family:Arial,Verdana,Sans-serif;
   margin-top: -0.5em;
   text-align: center;
   position: relative;
 }
 
-h2 {
-  margin-top:0.5em;
+#count {
+  margin-bottom: 1vw;
   color:red;
   text-align: center;
   font-weight: bold;
   font-family:Arial,Verdana,Sans-serif;
-  font-size: 2em;
+  font-size: 5vw;
+  position: relative;
+  bottom:3vw;
 }
 

@@ -1,121 +1,95 @@
+/* global $ */
+window.onload = function () {
+    $(document).ready(function() {
+//Define the properties that are needed in the game,the colorflash arary
 var turn = [];
-var usedPattern = [];
+var computer = [];
 var count = 0;
 var game = false;
-var greenSound = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3");
-var redSound = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3");
-var orangeSound = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3");
-var blueSound = new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3");
 
-function add() {
-var n = randNum(1, 4);
-// add pattern to array
-turn.push(n);
-}
-
-function playArray() {
-// takes pattern array
-for (var i = 0; i < turn.length; i++) {
-var delayTime = i * 600;
-setTimeout(colorShow, delayTime);
-}
-}
-
-function colorShow() {
-  var item = turn.pop();
-      game = true;
-
-// pops and removes first item of array 
-      $('#' + item).animate({
-      opacity: 0.2
-      }, 200).animate({
-      opacity: 1
-      }, 100);
-      
-//animation takes 300 ms
- 
-    
-usedPattern.push(item);
-// take the item  removed from pattern and add it to used pattern 
-
-if (turn.length <= 0) {
-// add the click event once cpu is finished showing the pattern
-createClicks();
-}
-
-} // end flashSquare()
-
-function createClicks() {
-      $('.colorblock').click(function() {
-      // check if clicked element is the right square
-      var item = usedPattern.shift();
-      var colorId = $(this).attr('id');
-      
-      $(this).animate({opacity:0.2},200).animate({opacity:1},100)
-      
-      // if yes remove from used pattern and add to pattern
-      if (item == colorId) {
-      //adds item back to pattern array
-      turn.push(item);
-      
-      if (usedPattern.length <= 0) {
-      count++;
-      $('#count').html('Level: ' + count);
-      
-      remove();
-      //user is finished clicking through the pattern successfully
-      // add new square to pattern
-      add();
-      
-      // playPattern();
-      setTimeout(playArray, 800);
-      }
-      
-      } else {
-      // else game over
-      game = false;
-      $('h1').html('Game Over').css({
-      "color":"red",
-      "font-size":"2.5em",
-      "padding":"5px",
-      "position": "relative",
-      });
-      
-      $('p').html('Click to Restart!');
-      // clear out pattern arrays
-      turn = [];
-      usedPattern = [];
-      }
-}); // end .square click
-} // end create click
-
-function remove() {
-//removes all events from element 
-$('.colorblock').unbind();
-}
-
-//start a new game all records removed
+//start a new game so need to reset all varible firstly
 function start() {
-remove();
-add();
-add();
-playArray(); 
 reset();
 }
 
-function reset() {
-count = 0;
-    $('#count').html('Level: ' + count);
-    $('h1').html('Simon');
-    $('p').html('Start Game!');
+//reset all varible 
+function reset(){
+    count=0;
+    $('.colorblock').unbind();
+    $('#count').html('Level:'+count);
+    $('#simon').html('Simon');
+    $('#start').html('Start Game!');
+    getRand();
+    flashArray(); 
     }
 
-$('#round').click(function() {
-if(game === false){
-    start();
-    } 
-    });
+// get a rand int between min and max, both min and max are inclusive
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;  
+}
+// get a random colorblock
+function getRand() {
+var n = getRandomIntInclusive(1, 4);
+turn.push(n);
+}
 
-function randNum(min, max) {
-    return Math.round(Math.random() * (max - min)) + min;
+// defined color blocks flash every one second
+function flashArray() {
+    for (let i = 0; i < turn.length; i++) {
+        let time = i * 1000;
+        setTimeout(colorShow, time);
+        }
+    }
+
+//let color blocks flash 
+function colorShow() {
+      let thisBlock = turn.pop();
+      game = true;
+//make animation for every color 
+      $('#' + thisBlock).fadeOut(150).fadeIn(150);
+      computer.push(thisBlock);
+      if (turn.length <= 0) {
+      player();
+    }
+} 
+
+//get the id from player click, and though determine whether it matches the last computer array can get player win will lost
+function player(){
+      $('.colorblock').click(function(){
+          let theblock = computer.shift();
+          let colorId = $(this).attr('id');
+           $(this).fadeOut(150).fadeIn(150);
+              if (theblock == colorId){
+                turn.push(theblock);
+                    if (computer.length <= 0) {
+                          count++;
+                          $('#count').html('Level: ' + count);
+                          $('.colorblock').unbind();
+                          //user is finished clicking through the pattern successfully
+                          // add new square to pattern
+                          getRand();
+                          // playPattern();
+                          setTimeout(flashArray, 1500);
+                          if (count==20){
+                              alert('You are so great!')}
+                    }
+                        } 
+                  else {
+                      game = false;
+                      $('#simon').text('Game Over');
+                      $('#start').text('Click to Restart!');
+                      alert("Oh,you lost! Let's start again！");
+                      turn = [];
+                      computer = [];
+                     }
+}); 
+} 
+// click the circle to restart
+$('#round').click(function() {
+    if(game == false){
+    start();
+}});
+});
 }
