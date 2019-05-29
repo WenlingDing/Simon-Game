@@ -17,20 +17,3 @@ describe("reset function", function() {
             }); 
 });
 
-describe(" colour is macth' function", function(){
- // Make sure that colour returned is 'green', 'red', 'yellow' or 'blue'
-        var pattern = /(green|red|orange|blue)/;
-
-        it("should return 'green', 'red', 'yellow' or 'blue'", function(){
-            expect(colorblock()).toMatch(pattern);
-        });
-        it("should return 'green', 'red', 'yellow' or 'blue'", function(){
-            expect(colorblock()).toMatch(pattern);
-        });
-        it("should return 'green', 'red', 'yellow' or 'blue'", function(){
-            expect(colorblock()).toMatch(pattern);
-        });
-        it("should return 'green', 'red', 'yellow' or 'blue'", function(){
-            expect(colorblock()).toMatch(pattern);
-        });
-    });

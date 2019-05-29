@@ -17,8 +17,19 @@ function reset(){
     count=0;
     $('.colorblock').unbind();
     $('#count').html('Level:'+count);
-    $('#simon').html('Simon');
-    $('#start').html('Start Game!');
+    $('#simon').text('Simon').css({
+              fontSize: '7vw',
+              textalign: 'center',
+              position: 'absolute',
+              left:'5vw',
+    });
+    $('#start').text('Start Game!').css({
+          fontSize:'5vw',
+          textalign: 'center',
+          position: 'absolute',
+          top:'15vw',
+          left: '5vw',
+    });
     getRand();
     flashArray(); 
     }
@@ -78,9 +89,21 @@ function player(){
                         } 
                   else {
                       game = false;
-                      $('#simon').text('Game Over');
-                      $('#start').text('Click to Restart!');
-                      alert("Oh,you lost! Let's start again！");
+                      $('#simon').text('Game Over').css({
+                          color:'red',
+                          fontSize:'5vw',
+                          margin:0,
+                          position: 'absolute',
+                          top:'2vw',
+                          right:'3vw',
+                      });
+                      $('#start').text('Click to Restart!').css({
+                          fontSize:'4vw',
+                          position:'absolute',
+                          top:'17vw',
+                          left: '4vw',
+                      });
+                      alert("Oh,you lost! Let's start again!");
                       turn = [];
                       computer = [];
                      }

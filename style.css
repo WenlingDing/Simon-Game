@@ -66,22 +66,24 @@ h1 {
 
 #simon {
   color:orange;
-  font-size: xx-large;
+  font-size: 7vw;
   font-weight: bold;
-  margin-top: 1vw;
+  margin: 1vw;
+  padding:1vw;
   text-align: center;
   font-family:Arial,Verdana,Sans-serif;
-  position: relative;
-  top: 4vw;
+  position: absolute;
+  left:5vw;
 }
 
 #start {
   color:orange;
-  font-size:small;
+  font-size:5vw;
   font-family:Arial,Verdana,Sans-serif;
-  margin-top: -0.5em;
   text-align: center;
-  position: relative;
+  position: absolute;
+  top:15vw;
+  left: 5vw;
 }
 
 #count {
@@ -91,7 +93,20 @@ h1 {
   font-weight: bold;
   font-family:Arial,Verdana,Sans-serif;
   font-size: 5vw;
-  position: relative;
-  bottom:3vw;
+  position:absolute;
+  left: 8vw;
+  top:25vw;
 }
 
+.over {
+  content: 'game over';
+  color:orange;
+  font-size:3vw;
+  font-weight: bold;
+  margin: 1vw;
+  padding:1vw;
+  text-align: center;
+  font-family:Arial,Verdana,Sans-serif;
+  position: absolute;
+  left:5vw;
+}
