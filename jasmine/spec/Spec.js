@@ -1,7 +1,7 @@
-
-describe("randNum function", function() {
+/*global expect getRand colorShow reset*/
+describe("getRand function", function() {
         it("should be greater than 0", function() {
-            expect(randNum(1,4)).toBeGreaterThan(0);
+            expect(getRand(1,4)).toBeGreaterThan(0);
         });
 });
     

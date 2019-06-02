@@ -1,21 +1,24 @@
-/* global $ */
+ /* global $ */
 window.onload = function () {
     $(document).ready(function() {
-//Define the properties that are needed in the game,the colorflash arary
+//Define the properties that are needed in the game
 var turn = [];
 var computer = [];
 var count = 0;
 var game = false;
 
-//start a new game so need to reset all varible firstly
+//start a new game so need to reset
 function start() {
 reset();
 }
 
-//reset all varible 
+//reset all varible so need to empty all records
 function reset(){
+    //level is zero
     count=0;
+    //remove the events about colors
     $('.colorblock').unbind();
+    // adjust the font style in the click board
     $('#count').html('Level:'+count);
     $('#simon').text('Simon').css({
               fontSize: '7vw',
@@ -40,48 +43,50 @@ function getRandomIntInclusive(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;  
 }
-// get a random colorblock
+// get a random colorblock to colorflash array
 function getRand() {
 var n = getRandomIntInclusive(1, 4);
 turn.push(n);
 }
 
-// defined color blocks flash every one second
+//pattern array
 function flashArray() {
     for (let i = 0; i < turn.length; i++) {
+// defined color blocks flash every one second       
         let time = i * 1000;
         setTimeout(colorShow, time);
         }
     }
 
-//let color blocks flash 
 function colorShow() {
+// get the last element value of the array
       let thisBlock = turn.pop();
-      game = true;
-//make animation for every color 
+//make animation after each random color choosed
       $('#' + thisBlock).fadeOut(150).fadeIn(150);
       computer.push(thisBlock);
+// if computer turn done, it is player turn
       if (turn.length <= 0) {
       player();
     }
 } 
 
-//get the id from player click, and though determine whether it matches the last computer array can get player win will lost
 function player(){
       $('.colorblock').click(function(){
+          //get the first element value of the array
           let theblock = computer.shift();
+          //get the id from player click
           let colorId = $(this).attr('id');
+          //make player click animation
            $(this).fadeOut(150).fadeIn(150);
+          //compare each click id and computer turn flash id, if it matches, player win
               if (theblock == colorId){
                 turn.push(theblock);
-                    if (computer.length <= 0) {
+                    if (computer.length <= 0){
+                        //add  level  
                           count++;
                           $('#count').html('Level: ' + count);
                           $('.colorblock').unbind();
-                          //user is finished clicking through the pattern successfully
-                          // add new square to pattern
                           getRand();
-                          // playPattern();
                           setTimeout(flashArray, 1500);
                           if (count==20){
                               alert('You are so great!')}
