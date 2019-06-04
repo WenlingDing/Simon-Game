@@ -1,8 +1,8 @@
  /* global $ */
-window.onload = function () {
-    $(document).ready(function() {
+window.onload = function (){
+    $(document).ready(function(){
 //Define the properties that are needed in the game
-var turn = [];
+var addedflash = [];
 var computer = [];
 var count = 0;
 var game = false;
@@ -46,12 +46,12 @@ function getRandomIntInclusive(min, max) {
 // get a random colorblock to colorflash array
 function getRand() {
 var n = getRandomIntInclusive(1, 4);
-turn.push(n);
+addedflash.push(n);
 }
 
 //pattern array
 function flashArray() {
-    for (let i = 0; i < turn.length; i++) {
+    for (let i = 0; i < addedflash.length; i++) {
 // defined color blocks flash every one second       
         let time = i * 1000;
         setTimeout(colorShow, time);
@@ -60,12 +60,12 @@ function flashArray() {
 
 function colorShow() {
 // get the last element value of the array
-      let thisBlock = turn.pop();
+      let thisBlock = addedflash.pop();
 //make animation after each random color choosed
       $('#' + thisBlock).fadeOut(150).fadeIn(150);
       computer.push(thisBlock);
 // if computer turn done, it is player turn
-      if (turn.length <= 0) {
+      if (addedflash.length <= 0) {
       player();
     }
 } 
@@ -80,7 +80,7 @@ function player(){
            $(this).fadeOut(150).fadeIn(150);
           //compare each click id and computer turn flash id, if it matches, player win
               if (theblock == colorId){
-                turn.push(theblock);
+                addedflash.push(theblock);
                     if (computer.length <= 0){
                         //add  level  
                           count++;
@@ -109,7 +109,7 @@ function player(){
                           left: '4vw',
                       });
                       alert("Oh,you lost! Let's start again!");
-                      turn = [];
+                      addedflash = [];
                       computer = [];
                      }
 }); 
@@ -120,4 +120,4 @@ $('#round').click(function() {
     start();
 }});
 });
-}
+};
