@@ -52,5 +52,7 @@ To run the tests, view index.html in a browser. Since most of the functionality 
 
 Deployment
 --
-I deployed the project to GitHub as folows: https://github.com/WenlingDing/Simon-Game
+
+I deployed the project to GitHub as folows: https://github.com/WenlingDing/Simon-Game<br>
+GitHub Pages: https://wenlingding.github.io/Simon-Game/<br>
 I pushed my repository to GitHub I selected the master branch as the source
